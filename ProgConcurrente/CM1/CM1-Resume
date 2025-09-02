@@ -1,0 +1,18 @@
+VU EN COURS:
+
+> C'est quoi la concurrence ?
+ - Concurrence != Parallelisme
+ - En meme temps (Multitasking)
+ - Il donne un peu de temps d'exec a un programme puis au suivant, en somme il split
+ - Les programmes sont en concurrence
+ - La concurrence est non deterministe
+
+> Comment on s'y prends ?
+ - On utilise la classe Threads
+ - cf MonFil.java et MonFil2.java
+ - Lancer un thread, on utilise fil.start();
+ - Faire dormir le thread, on utilise fil.sleep(TEMPS);
+ - Savoir qui est en train d'exec, on utilise Thread.currentThread().ThreadId();
+
+
+
