@@ -4,10 +4,15 @@ Bienvenue sur la page Notion dédiée à la matière.
 Cette page a été conçue pour centraliser toutes les ressources, notes, exercices et documents importants afin de faciliter ton apprentissage.
 
 🚀 À quoi sert cette page ?
+
 📖 Notes de cours
+
 📝 Fiches de révision
+
 🔗 Liens utiles vers des ressources externes
+
 🧩 Exercices pratiques avec corrigés pour s’entraîner
+
 🔍 Comment utiliser cette page ?
 
 Parcours les différentes sections pour retrouver facilement l’information recherchée
