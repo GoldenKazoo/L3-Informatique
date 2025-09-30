@@ -1,6 +1,6 @@
 📚 Page Notion de la matière Grammaire Algebrique
 
-Bienvenue sur la page Notion dédiée à la matière [Nom de la matière].
+Bienvenue sur la page Notion dédiée à la matière.
 Cette page a été conçue pour centraliser toutes les ressources, notes, exercices et documents importants afin de faciliter ton apprentissage.
 
 🚀 À quoi sert cette page ?
