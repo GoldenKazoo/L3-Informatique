@@ -48,18 +48,6 @@ public class TicTacToe extends JComponent {
                         incTurn();
             }}
         });
-        int x = 0;
-        int y = 0;
-        while (x < 3)
-        {
-            while (y < 3)
-            {
-                System.out.print(board[x][y]);
-                y++;
-            }
-            x++;
-            System.out.println("");
-        }
 }    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); 
