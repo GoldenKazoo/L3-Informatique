@@ -1,0 +1,5 @@
+Bonjour tout le monde.
+Ce fichier contient plusieurs lignes de texte.
+Il servira à tester la conversion en majuscules
+de toutes les lettres, sans modifier les caractères spéciaux.
+Ainsi, les étudiants pourront vérifier que leur programme fonctionne correctement.

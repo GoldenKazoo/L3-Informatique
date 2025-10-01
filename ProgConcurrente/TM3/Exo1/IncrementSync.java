@@ -12,10 +12,15 @@ public class IncrementSync {
     public static void main(String[] args) throws InterruptedException {
         IncrementSync counter = new IncrementSync();
 
-        Runnable task = () -> {
-            for (int i = 0; i < 10000; i++) {
+        Runnable task = new Runnable()
+        {
+            @Override
+            public void run() {
+            for (int i = 0; i < 10000; i++)
+            {
                 counter.increment();
             }
+        }
         };
 
         Thread t1 = new Thread(task);
