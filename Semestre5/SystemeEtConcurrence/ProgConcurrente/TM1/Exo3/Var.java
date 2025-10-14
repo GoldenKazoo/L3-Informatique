@@ -1,4 +1,4 @@
-public claass Var
+public class Var
 {
     int x = 0;
 }
