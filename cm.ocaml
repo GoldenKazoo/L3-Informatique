@@ -1,0 +1,27 @@
+E -> minus Eadd
+| E plus E
+| E fois E
+| PO E PF
+|Int[int]
+
+
+type exp =
+|Eminus of exp
+|Eadd of exp * exp
+|Emult of exp * exp
+|Eint of int
+
+
+Regles construction type:
+
+- Un type par non term
+- Pour chaque type (= non term)
+    - Un cas par production
+    - Pour chaque cas (= production X -> alpha)
+        - Une info par element de la partie droite = alpha
+            - terminal -> uniquement si ce attribut
+            - non term -> type
+
+
+I -> for (id = E; E;I) I
+|while (E) I
