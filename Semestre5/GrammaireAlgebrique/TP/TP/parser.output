@@ -1,0 +1,226 @@
+   0  $accept : %entry% $end
+
+   1  ansyn : TERM ansyn
+   2        | expr TERM
+
+   3  expr : INT
+   4       | ID
+   5       | expr PLUS expr
+   6       | expr TIME expr
+   7       | expr MINUS expr
+   8       | MINUS expr
+   9       | LPAR expr RPAR
+
+  10  %entry% : '\001' ansyn
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . ansyn  (10)
+
+	INT  shift 3
+	MINUS  shift 4
+	LPAR  shift 5
+	TERM  shift 6
+	ID  shift 7
+	.  error
+
+	ansyn  goto 8
+	expr  goto 9
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	expr : INT .  (3)
+
+	.  reduce 3
+
+
+state 4
+	expr : MINUS . expr  (8)
+
+	INT  shift 3
+	MINUS  shift 4
+	LPAR  shift 5
+	ID  shift 7
+	.  error
+
+	expr  goto 10
+
+
+state 5
+	expr : LPAR . expr RPAR  (9)
+
+	INT  shift 3
+	MINUS  shift 4
+	LPAR  shift 5
+	ID  shift 7
+	.  error
+
+	expr  goto 11
+
+
+state 6
+	ansyn : TERM . ansyn  (1)
+
+	INT  shift 3
+	MINUS  shift 4
+	LPAR  shift 5
+	TERM  shift 6
+	ID  shift 7
+	.  error
+
+	ansyn  goto 12
+	expr  goto 9
+
+
+state 7
+	expr : ID .  (4)
+
+	.  reduce 4
+
+
+state 8
+	%entry% : '\001' ansyn .  (10)
+
+	.  reduce 10
+
+
+state 9
+	ansyn : expr . TERM  (2)
+	expr : expr . PLUS expr  (5)
+	expr : expr . TIME expr  (6)
+	expr : expr . MINUS expr  (7)
+
+	PLUS  shift 13
+	MINUS  shift 14
+	TERM  shift 15
+	TIME  shift 16
+	.  error
+
+
+state 10
+	expr : expr . PLUS expr  (5)
+	expr : expr . TIME expr  (6)
+	expr : expr . MINUS expr  (7)
+	expr : MINUS expr .  (8)
+
+	.  reduce 8
+
+
+state 11
+	expr : expr . PLUS expr  (5)
+	expr : expr . TIME expr  (6)
+	expr : expr . MINUS expr  (7)
+	expr : LPAR expr . RPAR  (9)
+
+	PLUS  shift 13
+	MINUS  shift 14
+	RPAR  shift 17
+	TIME  shift 16
+	.  error
+
+
+state 12
+	ansyn : TERM ansyn .  (1)
+
+	.  reduce 1
+
+
+state 13
+	expr : expr PLUS . expr  (5)
+
+	INT  shift 3
+	MINUS  shift 4
+	LPAR  shift 5
+	ID  shift 7
+	.  error
+
+	expr  goto 18
+
+
+state 14
+	expr : expr MINUS . expr  (7)
+
+	INT  shift 3
+	MINUS  shift 4
+	LPAR  shift 5
+	ID  shift 7
+	.  error
+
+	expr  goto 19
+
+
+state 15
+	ansyn : expr TERM .  (2)
+
+	.  reduce 2
+
+
+state 16
+	expr : expr TIME . expr  (6)
+
+	INT  shift 3
+	MINUS  shift 4
+	LPAR  shift 5
+	ID  shift 7
+	.  error
+
+	expr  goto 20
+
+
+state 17
+	expr : LPAR expr RPAR .  (9)
+
+	.  reduce 9
+
+
+state 18
+	expr : expr . PLUS expr  (5)
+	expr : expr PLUS expr .  (5)
+	expr : expr . TIME expr  (6)
+	expr : expr . MINUS expr  (7)
+
+	TIME  shift 16
+	PLUS  reduce 5
+	MINUS  reduce 5
+	RPAR  reduce 5
+	TERM  reduce 5
+
+
+state 19
+	expr : expr . PLUS expr  (5)
+	expr : expr . TIME expr  (6)
+	expr : expr . MINUS expr  (7)
+	expr : expr MINUS expr .  (7)
+
+	TIME  shift 16
+	PLUS  reduce 7
+	MINUS  reduce 7
+	RPAR  reduce 7
+	TERM  reduce 7
+
+
+state 20
+	expr : expr . PLUS expr  (5)
+	expr : expr . TIME expr  (6)
+	expr : expr TIME expr .  (6)
+	expr : expr . MINUS expr  (7)
+
+	.  reduce 6
+
+
+12 terminals, 4 nonterminals
+11 grammar rules, 21 states
