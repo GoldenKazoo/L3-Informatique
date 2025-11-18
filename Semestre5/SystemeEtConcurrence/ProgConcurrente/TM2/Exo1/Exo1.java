@@ -27,7 +27,7 @@ class Compteur implements Runnable {
     }
 }
 
-public class Question1 {
+public class Exo1 {
     public static void main(String[] args) throws InterruptedException {
         Compteur compteur = new Compteur(10000);
 
