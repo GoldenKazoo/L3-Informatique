@@ -35,6 +35,13 @@ let add_value v1 v2 = match (v1, v2) with
   | v1, VStr s2 -> VStr ((string_of_value v1) ^ s2)
   | _, _ -> failwith (Printf.sprintf "Type mismatch: cannot add '%s' and '%s'" (string_of_value v1) (string_of_value v2))
 
+let mult_value v1 v2 
+let neg_value v1 = match v1 with
+  |Vint i -> -1 * i1
+  |VFloat f -> -1.0 * f
+  |_ -> failwith (Printf.sprintf "Can't do neg of this !")
+
+
 (* Evaluation des expressions *)
 let rec eval_expr e = match e with
   | ECst v -> v
