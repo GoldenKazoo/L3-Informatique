@@ -1,0 +1,13 @@
+- Une APP est constitue d'une ou plusieurs activity
+- Chaque ecran = une activity
+- Le layout d'une activite est compose de Views
+	- Les feuilles sont des Views par ex
+		- Button
+		- TextView
+	- Les noeuds internes sont des ViewsGroup par ex
+		- LinearLayout
+		- ScrollView
+	- Une activity peut en lancer une autre via un Intent
+		- Soit en la nommant (interne a l'application)
+		- Soit a la crie (ex pour prendre une photo)
+	- Programmation event a base de callback
