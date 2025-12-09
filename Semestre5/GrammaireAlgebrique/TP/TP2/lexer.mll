@@ -21,6 +21,9 @@ rule anlex = parse
   | '('                               { LPAR }
   | ')'                               { RPAR }
   | ";;"                              { TERM }
+  | "and"                             { AND  }
+  | "or"                              { OR   }
+  | "not"                             { NOT  }
   | eof                               { raise Eof }
   | _  as lxm                         { (* Pour tout autre caractère : message sur la sortie erreur + oubli *)
                                         Printf.eprintf "Unknown character '%c': ignored\n" lxm; flush stderr;

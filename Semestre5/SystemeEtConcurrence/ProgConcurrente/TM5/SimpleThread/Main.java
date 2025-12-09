@@ -6,22 +6,19 @@ import java.util.concurrent.BlockingQueue;
 
 import Blocking_queu_Home_made.Blocking_queu;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
-        BlockingQueue<Runnable> queu = new ArrayBlockingQueue(10);
-        SimpleThread            simple = new SimpleThread(queu);
-        Task[] tasks = new Task[2];
+public class Main {
+    public static void main(String[] args) {
+        SimpleThread st = new SimpleThread();
 
-        for (int i = 0 ;  i < 2; i++)
-        {
-            tasks[i] = new Task(i);
-        }
-
-        for(int j = 0; j < 2; j++)
-        {
-            simple.execute(tasks[j]);
+        for (int i = 0 ; i < 100 ; i++) {
+            int id = i;
+            st.execute(() -> {
+                for (int k = 0 ; k < 5 ; k++) {
+                    System.out.println("Tâche " + id + " → " + k);
+                    try { Thread.sleep(300); } catch (InterruptedException e) {}
+                }
+            });
         }
     }
 }
+

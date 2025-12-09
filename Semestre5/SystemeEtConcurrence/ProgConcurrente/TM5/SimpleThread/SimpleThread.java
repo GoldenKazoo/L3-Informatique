@@ -1,21 +1,37 @@
 package SimpleThread;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
 public class SimpleThread implements Executor
 {
-    Runnable task;
-    BlockingQueue<Runnable>  queu;
+    Thread fil;
+    BlockingQueue<Runnable>  queu = new ArrayBlockingQueue<>(5);
 
-    public SimpleThread(BlockingQueue<Runnable> queu)
+    public SimpleThread()
     {
-        this.queu = queu;
+        fil = new Thread(() ->
+        {
+            while (true)
+            {
+                try
+                {
+                    Runnable task = queu.take();
+                    task.run();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+        fil.start();
     }
     
     public void execute(Runnable task)
     {
-        try {
+        try
+        {
             queu.put(task);
             System.out.println("=== Elements dans la queu : " + queu.size()+ "===");
     
@@ -24,13 +40,7 @@ public class SimpleThread implements Executor
             e.printStackTrace();
         }
         try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            new Thread(queu.take()).start();
+            Thread.sleep(0);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

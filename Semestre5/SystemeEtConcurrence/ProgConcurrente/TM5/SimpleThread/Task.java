@@ -17,7 +17,7 @@ public class Task implements Runnable
         int i = 0;
         while (i < 5)
         {
-            System.out.println("Le thread " + id + " a send ==" + r.nextInt() + "==");
+            System.out.println("Le thread " + id + " a send ==" + r.nextInt(10) + "==");
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -26,5 +26,5 @@ public class Task implements Runnable
             }
             i++;
         }   
-}
+    }
 }

@@ -12,11 +12,15 @@ open Ast
 %token PLUS MINUS TIMES
 %token LPAR RPAR
 %token TERM
+%token AND
+%token OR
+%token NOT
 
 /* Précédences (priorité + associativité) des terminaux */
 %left PLUS MINUS
 %left TIMES
-%nonassoc NEG
+%left AND OR NOT
+%nonassoc NEG NOT
 
 /* Déclaration du non-terminal axiome (ici, ansyn) et du type de son attribut */
 %type <Ast.expr> ansyn
