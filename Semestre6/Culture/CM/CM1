@@ -1,0 +1,32 @@
+Language qu'on va voir :
+
+- python
+- scala
+- catala 
+- javascript
+- why3 (?)
+
+Notation :
+
+Moyenne des 3 meilleurs CC sur 4 (4 ou 5)
+
+-----------------------------------------------------------------------------------------------------------------
+                                            Python :
+-----------------------------------------------------------------------------------------------------------------
+
+Pas un language type statiquement
+
+Typage dynamique -> Les variables peuvent changer de type au cours de leur vie
+
+
+
+Code source (.c, .ml, .java) ----> Code compiled (.exe .out ...) 
+                   compilation = traduction
+
+
+if True or reseta2():
+    print("Je suis dans le if")
+else
+    printf("Je suis dans le else")
+print(a) #python est paresseux (evaluation paresseur)
+         #'True or Bidulu' est toujours True, donc on evalue pas Bidule donc reseta2 est pas call
