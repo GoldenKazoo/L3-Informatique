@@ -1,0 +1,42 @@
+# en realite on a un soucis inherent avec les objets mutable
+# im champ mutable ne doit pas intervenir dans le calcul du hash
+
+# s.add(l)
+# les listes ne sont pas hashable, car elles sont mutables
+
+d=(1:"un", 2:3, "trois":3) #dictionnaire
+
+d[2] = 4
+print(d[2])
+
+#d[l]=42
+
+t=(1, "deux")
+d[t] = 5 # (1, "deux") est un tuple
+#t[1]=4 # les tuples ne sont pas mutables
+
+
+# heritage : class B(A): --> B herite de A
+# on peut heriter de plusieurs classes : class B(A1, A2):
+
+# iterateurs
+
+for i in range(10):
+    print(i)
+for i in "abc":
+    print(i)
+
+for i in UnSurDeux([1,2,3,4]):
+    def __init__(self, l):
+        self.l=le
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        return self.l[0]
+
+#un iterable doit posseder une methode __iter__(self)
+# qui renvoie un iterateur
+
+#un iterateur 
