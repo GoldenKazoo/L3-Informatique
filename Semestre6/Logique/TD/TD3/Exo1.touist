@@ -1,0 +1,38 @@
+chemin(1,1) ;;commenter pour retirer la condition de 1 et 4
+chemin(4,8)
+
+bigand $i in [1..7]:
+	(chemin(1, $i) => chemin(2, $i+1) or chemin(8, $i+1) or chemin(6, $i+1) or chemin(1, $i+1))
+end
+
+bigand $i in [1..7]:
+	(chemin(2, $i) => chemin(3, $i+1) or chemin(2, $i+1))
+end
+
+bigand $i in [1..7]:
+	(chemin(3, $i) => chemin(3, $i) or chemin(3, $i+1))
+end
+
+bigand $i in [1..7]:
+	(chemin(4, $i) => chemin(3, $i+1) or chemin(1, $i+1) or chemin(5, $i+1) or chemin(4, $i+1))
+end
+
+bigand $i in [1..7]:
+	(chemin(5, $i) => chemin(4, $i+1) or chemin(6, $i+1) or chemin(5, $i+1))
+end
+
+bigand $i in [1..7]:
+	(chemin(6, $i) => chemin(7, $i+1) or chemin(8, $i+1) or chemin(6, $i+1))
+end
+
+bigand $i in [1..7]:
+	(chemin(7, $i) => chemin(7, $i+1) or chemin(7, $i+1))
+end
+
+bigand $i in [1..7]:
+	(chemin(8, $i) => chemin(7, $i+1) or chemin(3, $i+1) or r chemin(8, $i+1))
+end
+
+bigand $j in [1..8]:
+	exact(1, chemin([1..8], $j))
+end
