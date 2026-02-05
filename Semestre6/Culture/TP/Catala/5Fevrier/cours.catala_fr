@@ -1,0 +1,112 @@
+```catala
+déclaration structure Individu:
+  donnée revenu contenu argent
+  donnée nombre_enfants contenu entier
+
+déclaration champ d'application CalculImpôtRevenu:
+  entrée date_actuelle contenu date
+  entrée individu contenu Individu
+  interne taux_imposition contenu décimal
+  résultat impôt_revenu contenu argent
+```
+
+## Article 1
+
+ L'impôt sur le revenu d'un individu est défini comme un pourcentage fixe du
+ revenu de l'individu sur une année.
+
+```catala
+champ d'application CalculImpôtRevenu:
+  définition impôt_revenu égal à
+    individu.revenu * taux_imposition
+```
+
+## Article 2 (ancienne version avant 2000)
+
+Le pourcentage fixe mentionné à l'article 1 est égal à 20 %.
+
+```catala
+champ d'application CalculImpôtRevenu:
+  étiquette article_2
+  définition taux_imposition sous condition
+    date_actuelle < |2000-01-01|
+  conséquence égal à 20%
+```
+
+## Article 2 (nouvelle version après 2000)
+
+Le pourcentage fixe mentionné à l'article 1 est égal à 21 %.
+
+```catala
+champ d'application CalculImpôtRevenu:
+  # Utilisez simplement la même étiquette "article_2" que la définition précédente pour les regrouper
+  étiquette article_2
+  définition taux_imposition sous condition
+    date_actuelle >= |2000-01-01|
+  conséquence égal à 21%
+```
+
+## Article 3
+
+Si l'individu a la charge de 2 enfants ou plus, alors le pourcentage
+fixe mentionné à l'article 1 est égal à 15 %.
+
+```catala
+champ d'application CalculImpôtRevenu:
+  étiquette article_3 exception article_2
+  définition taux_imposition sous condition
+    individu.nombre_enfants >= 2
+  conséquence égal à 15%
+```
+
+## Article 4
+
+Les individus gagnant moins de 10 000€ sont exonérés de l'impôt sur le revenu mentionné
+à l'article 1.
+
+```catala
+champ d'application CalculImpôtRevenu:
+  étiquette article_4 exception article_3
+  définition taux_imposition sous condition
+    individu.revenu <= 10000€
+  conséquence égal à 0%
+```
+
+Une possibilité est de coder cette règle comme définition soit de `taux_imposition`,
+soit directement de `impôt_revenu`
+
+## Article 5
+
+Les individus gagnant plus de 100 000€ sont soumis à un taux d'imposition de
+30%, quel que soit leur nombre d'enfants.
+
+```catala
+champ d'application CalculImpôtRevenu:
+  étiquette article_5 exception article_3
+  définition taux_imposition sous condition
+    individu.revenu > 100000€
+  conséquence égal à 30%
+```
+
+
+## Test
+
+```catala
+déclaration champ d'application Test:
+  résultat calcul contenu CalculImpôtRevenu
+
+champ d'application Test:
+  définition calcul égal à
+    résultat de CalculImpôtRevenu avec {
+      -- individu:
+        Individu {
+          -- revenu: 20000€
+          -- nombre_enfants: 0
+        }
+      -- date_actuelle: |1999-01-01|
+    }
+```
+
+## Afficher l'arbre des exceptions
+
+`catala exception -s CalculImpôtRevenu --variable taux_imposition tutoriel_simplifié.catala_fr`
