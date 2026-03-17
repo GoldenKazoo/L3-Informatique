@@ -26,7 +26,8 @@ def vider(file):
         while (True):
             file.retirer()
     except FileVide:
-        print("")
+        print("File Vide")
+        pass
 
 
 l = File()
